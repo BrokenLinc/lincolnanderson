@@ -1,10 +1,7 @@
-var SLACK_TOKEN = "YOUR_TOKEN";
-var CHANNEL_ID = "YOUR_CHANNEL_ID";
 Router.route('/journal', function () {
   this.layout('JournalLayout');
   this.render('journal');
 });
-
 
 if (Meteor.isClient) {
 
@@ -48,12 +45,15 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
-    Meteor.methods({
-        getMessages: function () {
-            this.unblock();
-            return Meteor.http.call("GET", "https://slack.com/api/groups.history?channel="+CHANNEL_ID+"&count=1000&token="+SLACK_TOKEN);
-        }
-    });
+  var SLACK_TOKEN = "SLACK_TOKEN";
+  var CHANNEL_ID = "CHANNEL_ID";
+
+  Meteor.methods({
+      getMessages: function () {
+          this.unblock();
+          return Meteor.http.call("GET", "https://slack.com/api/groups.history?channel="+CHANNEL_ID+"&count=1000&token="+SLACK_TOKEN);
+      }
+  });
 }
 
 function observable(defaultValue) {
