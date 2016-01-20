@@ -1,0 +1,98 @@
+* {
+	box-sizing: border-box;
+}
+
+//<lu>
+
+//customizable
+@gapsize: 10px;
+@columnsize: 145px;
+
+//leave these alone
+@minfontsize: 16px;
+@lu-gap:unit(@gapsize / @minfontsize, rem);
+@lu-col1:unit((@columnsize * 1 + @gapsize * 0) / @minfontsize, rem);
+@lu-col2:unit((@columnsize * 2 + @gapsize * 1) / @minfontsize, rem);
+@lu-col3:unit((@columnsize * 3 + @gapsize * 2) / @minfontsize, rem);
+
+@screenwidth-2col-min:(@columnsize * 2 + @gapsize * 3);
+@screenwidth-3col-min:(@columnsize * 3 + @gapsize * 4);
+@screenwidth-4col-min:(@columnsize * 4 + @gapsize * 4);
+@screenwidth-5col-min:(@columnsize * 5 + @gapsize * 4);
+@screenwidth-6col-min:(@columnsize * 6 + @gapsize * 4);
+@screenwidth-7col-min:(@columnsize * 7 + @gapsize * 4);
+@screenwidth-8col-min:(@columnsize * 8 + @gapsize * 4);
+@screenwidth-9col-min:(@columnsize * 9 + @gapsize * 4);
+@screenwidth-10col-min:(@columnsize * 10 + @gapsize * 4);
+@screenwidth-11col-min:(@columnsize * 11 + @gapsize * 4);
+@screenwidth-12col-min:(@columnsize * 12 + @gapsize * 4);
+
+@screenwidth-1col-max:(@screenwidth-2col-min - 1px);
+@screenwidth-2col-max:(@screenwidth-3col-min - 1px);
+@screenwidth-3col-max:(@screenwidth-4col-min - 1px);
+@screenwidth-4col-max:(@screenwidth-5col-min - 1px);
+@screenwidth-5col-max:(@screenwidth-6col-min - 1px);
+@screenwidth-6col-max:(@screenwidth-7col-min - 1px);
+@screenwidth-7col-max:(@screenwidth-8col-min - 1px);
+@screenwidth-8col-max:(@screenwidth-9col-min - 1px);
+@screenwidth-9col-max:(@screenwidth-10col-min - 1px);
+@screenwidth-10col-max:(@screenwidth-11col-min - 1px);
+@screenwidth-11col-max:(@screenwidth-12col-min - 1px);
+
+@mq-1col: ~"screen and (max-width:@{screenwidth-1col-max})";
+@mq-2col: ~"screen and (min-width:@{screenwidth-2col-min}) and (max-width:@{screenwidth-2col-max})";
+@mq-3col: ~"screen and (min-width:@{screenwidth-3col-min}) and (max-width:@{screenwidth-3col-max})";
+@mq-4col: ~"screen and (min-width:@{screenwidth-4col-min}) and (max-width:@{screenwidth-4col-max})";
+@mq-5col: ~"screen and (min-width:@{screenwidth-5col-min}) and (max-width:@{screenwidth-5col-max})";
+@mq-6col: ~"screen and (min-width:@{screenwidth-6col-min}) and (max-width:@{screenwidth-6col-max})";
+@mq-7col: ~"screen and (min-width:@{screenwidth-7col-min}) and (max-width:@{screenwidth-7col-max})";
+@mq-8col: ~"screen and (min-width:@{screenwidth-8col-min}) and (max-width:@{screenwidth-8col-max})";
+@mq-9col: ~"screen and (min-width:@{screenwidth-9col-min}) and (max-width:@{screenwidth-9col-max})";
+@mq-10col: ~"screen and (min-width:@{screenwidth-10col-min}) and (max-width:@{screenwidth-10col-max})";
+@mq-11col: ~"screen and (min-width:@{screenwidth-11col-min}) and (max-width:@{screenwidth-11col-max})";
+@mq-12col: ~"screen and (min-width:@{screenwidth-12col-min})";
+
+.make-breakpoint(@columns, @mode) {
+	@minwidth: (@columnsize * @columns + @gapsize * (@columns + 1));
+	@fontsize: unit(@minfontsize / @minwidth * 100, vw);
+
+	& when (@mode = default) {
+		font-size: @fontsize;
+		width:100vw;
+		overflow-x: hidden;
+	}
+	& when not(@mode = default) {
+		@media screen and (min-width: @minwidth) {
+			font-size: @fontsize;
+		}
+	}
+}
+.make-breakpoint(@columns) {
+	.make-breakpoint(@columns, "");
+}
+//</lu>
+
+
+
+@phone-portrait: @mq-2col;
+@phone-landscape: @mq-3col;
+@tablet-portrait: @mq-4col;
+@tablet-landscape: @mq-6col;
+@desktop-standard: @mq-8col;
+@desktop-wide: @mq-12col;
+
+html, body {
+	.make-breakpoint(1, default);
+	//phone.portrait
+	.make-breakpoint(2);
+	//phone.landscape
+	.make-breakpoint(3);
+	//tablet.portrait
+	.make-breakpoint(4);
+	//tablet.landscape
+	.make-breakpoint(6);
+	//desktop.standard
+	.make-breakpoint(8);
+	//desktop.wide
+	.make-breakpoint(12);
+}
