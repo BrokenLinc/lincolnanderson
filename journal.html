@@ -1,0 +1,30 @@
+<template name="JournalLayout">
+	<body class="mod-journal">
+		{{> yield}}
+	</body>
+</template>
+
+<template name="journal">
+	{{> channel}}
+</template>
+
+<template name="channel">
+	<div class="content-container">
+		<h1>Lincoln&rsquo;s Journal</h1>
+		{{#each messages}}
+			{{> message}}
+		{{/each}}
+	</div>
+</template>
+
+<template name="message">
+	{{#if isText}}
+		<div class="timestamp">{{time}}</div>
+		{{#each lines}}
+			<p>{{this}}</p>
+		{{/each}}
+	{{/if}}
+	{{#if isFile}}
+		<a class="image-container" href="{{fileUrl}}" target="_blank"><img src="{{fileThumbUrl}}"/></a>
+	{{/if}}
+</template>

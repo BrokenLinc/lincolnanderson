@@ -1,5 +1,10 @@
 var SLACK_TOKEN = "YOUR_TOKEN";
 var CHANNEL_ID = "YOUR_CHANNEL_ID";
+Router.route('/journal', function () {
+  this.layout('JournalLayout');
+  this.render('journal');
+});
+
 
 if (Meteor.isClient) {
 
