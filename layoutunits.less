@@ -1,8 +1,9 @@
 @import "lunify.less";
 
+// Page layouts
 .tilegrid {
 	display: flex;
-	flex-wrap: wrap;
+	flex-flow: wrap;
 	justify-content: space-between;
 
 	&.mod-fullpage {
@@ -15,39 +16,51 @@
 		}
 	}
 }
+
+// Components
 .tile {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
+	position:relative;
 
 	width: @lu-col2;
 	margin-bottom: @lu-gap;
 
 	height:@lu-col2 * 9/16;
-	padding:0.5rem 0.75rem;
 	overflow:hidden;
 
 	background:#eee;
+	background-size:cover;
+	background-position:center center;
 
 	&.mod-shortwide {
 		width:@lu-col3;
 		height:@lu-col1;
 	}
 }
-
+.tile-content {
+	position:absolute;
+	bottom:0;
+	background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(fade(black,0)), to(black));
+	color:white;
+	padding:1rem 0.75rem 0.5rem;
+	width:100%;
+}
 .tile-date {
 	display:block;
 	text-transform: uppercase;
 	font-weight: 700;
-	color:#888;
 	font-size:0.5em;
 	line-height: 2em;
+	opacity:0.75;
 }
 .tile-title {
 	display:block;
 	font-size:1.5em;
+	max-height:2.5em;
+	overflow:hidden;
 }
 .tile-byline {
 	display:block;
-	color:#888;
+	opacity:0.5;
+	max-height:2.5em;
+	overflow:hidden;
 }

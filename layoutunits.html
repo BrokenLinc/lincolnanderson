@@ -1,11 +1,12 @@
 <template name="layoutunits">
-	Count: {{photos.length}}
 	<div class="tilegrid mod-fullpage">
-		{{#each times 12}}
-		<div class="tile">
-			<span class="tile-date">December 12</span>
-			<span class="tile-title">The Force Awakens</span>
-			<span class="tile-byline">Are you ready for the next chapter of the epic Star Wars Saga?</span>
+		{{#each photos}}
+		<div class="tile" style="background-image:url({{media.m}})">
+			<div class="tile-content">
+				<span class="tile-date">{{time}}</span>
+				<span class="tile-title">{{title}}</span>
+				<span class="tile-byline">{{author}}</span>
+			</div>
 		</div>
 		{{/each}}
 	</div>

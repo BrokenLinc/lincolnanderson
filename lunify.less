@@ -1,8 +1,7 @@
+//<lu>
 * {
 	box-sizing: border-box;
 }
-
-//<lu>
 
 //customizable
 @gapsize: 10px;
@@ -56,14 +55,16 @@
 	@minwidth: (@columnsize * @columns + @gapsize * (@columns + 1));
 	@fontsize: unit(@minfontsize / @minwidth * 100, vw);
 
-	& when (@mode = default) {
-		font-size: @fontsize;
-		width:100vw;
-		overflow-x: hidden;
-	}
-	& when not(@mode = default) {
-		@media screen and (min-width: @minwidth) {
+	html, body {
+		& when (@mode = default) {
 			font-size: @fontsize;
+			width:100vw;
+			overflow-x: hidden;
+		}
+		& when not(@mode = default) {
+			@media screen and (min-width: @minwidth) {
+				font-size: @fontsize;
+			}
 		}
 	}
 }
@@ -74,25 +75,26 @@
 
 
 
-@phone-portrait: @mq-2col;
-@phone-landscape: @mq-3col;
-@tablet-portrait: @mq-4col;
-@tablet-landscape: @mq-6col;
-@desktop-standard: @mq-8col;
-@desktop-wide: @mq-12col;
+// Breakpoints & device aliases
 
-html, body {
-	.make-breakpoint(1, default);
-	//phone.portrait
-	.make-breakpoint(2);
-	//phone.landscape
-	.make-breakpoint(3);
-	//tablet.portrait
-	.make-breakpoint(4);
-	//tablet.landscape
-	.make-breakpoint(6);
-	//desktop.standard
-	.make-breakpoint(8);
-	//desktop.wide
-	.make-breakpoint(12);
-}
+.make-breakpoint(1, default);
+
+@phone-portrait: @mq-2col;
+.make-breakpoint(2);
+
+@phone-landscape: @mq-3col;
+.make-breakpoint(3);
+
+@tablet-portrait: @mq-4col;
+.make-breakpoint(4);
+
+@tablet-landscape: @mq-6col;
+.make-breakpoint(6);
+
+@desktop-standard: @mq-8col;
+.make-breakpoint(8);
+
+@desktop-wide: @mq-12col;
+.make-breakpoint(12);
+
+

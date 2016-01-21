@@ -4,11 +4,14 @@ Router.route('/layoutunits', function () {
 if(Meteor.isClient) {
 	Template.layoutunits.onCreated(function(){
 		 Meteor.call('getPhotos', function(error, response){
-		 	console.log(response);
 		 	if(error) {
 		 		Session.set('photos', []);
 		 	} else {
-			 	Session.set('photos', response);
+		 		var content = response.content.replace(/\'/g,'\\');
+			 	//console.log(content);
+		 		var photos = JSON.parse(content).items;
+			 	//console.log(photos);
+			 	Session.set('photos', photos.splice(-12));
 			}
 		 });
 	});
@@ -22,6 +25,9 @@ if(Meteor.isClient) {
 		},
 		photos: function() {
 			return Session.get('photos');
+		},
+		time: function() {
+			return moment(this.date_taken).format('h:mma MMMM Do, YYYY');
 		}
 	});
 }
