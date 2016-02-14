@@ -1,0 +1,71 @@
+//<lu>
+* {
+	box-sizing: border-box;
+}
+
+//override-able
+@gu-columnsize: 160px;
+
+//leave these alone
+@gu-minfontsize: 16px;
+@gu:unit(@gu-columnsize / @gu-minfontsize, rem);
+
+@gu-screenwidth-2col-min:(@gu-columnsize * 2);
+@gu-screenwidth-3col-min:(@gu-columnsize * 3);
+@gu-screenwidth-4col-min:(@gu-columnsize * 4);
+@gu-screenwidth-5col-min:(@gu-columnsize * 5);
+@gu-screenwidth-6col-min:(@gu-columnsize * 6);
+@gu-screenwidth-7col-min:(@gu-columnsize * 7);
+@gu-screenwidth-8col-min:(@gu-columnsize * 8);
+@gu-screenwidth-9col-min:(@gu-columnsize * 9);
+@gu-screenwidth-10col-min:(@gu-columnsize * 10);
+@gu-screenwidth-11col-min:(@gu-columnsize * 11);
+@gu-screenwidth-12col-min:(@gu-columnsize * 12);
+
+@gu-screenwidth-1col-max:(@gu-screenwidth-2col-min - 1px);
+@gu-screenwidth-2col-max:(@gu-screenwidth-3col-min - 1px);
+@gu-screenwidth-3col-max:(@gu-screenwidth-4col-min - 1px);
+@gu-screenwidth-4col-max:(@gu-screenwidth-5col-min - 1px);
+@gu-screenwidth-5col-max:(@gu-screenwidth-6col-min - 1px);
+@gu-screenwidth-6col-max:(@gu-screenwidth-7col-min - 1px);
+@gu-screenwidth-7col-max:(@gu-screenwidth-8col-min - 1px);
+@gu-screenwidth-8col-max:(@gu-screenwidth-9col-min - 1px);
+@gu-screenwidth-9col-max:(@gu-screenwidth-10col-min - 1px);
+@gu-screenwidth-10col-max:(@gu-screenwidth-11col-min - 1px);
+@gu-screenwidth-11col-max:(@gu-screenwidth-12col-min - 1px);
+
+@gu-mq-1col: ~"screen and (max-width:@{gu-screenwidth-1col-max})";
+@gu-mq-2col: ~"screen and (min-width:@{gu-screenwidth-2col-min}) and (max-width:@{gu-screenwidth-2col-max})";
+@gu-mq-3col: ~"screen and (min-width:@{gu-screenwidth-3col-min}) and (max-width:@{gu-screenwidth-3col-max})";
+@gu-mq-4col: ~"screen and (min-width:@{gu-screenwidth-4col-min}) and (max-width:@{gu-screenwidth-4col-max})";
+@gu-mq-5col: ~"screen and (min-width:@{gu-screenwidth-5col-min}) and (max-width:@{gu-screenwidth-5col-max})";
+@gu-mq-6col: ~"screen and (min-width:@{gu-screenwidth-6col-min}) and (max-width:@{gu-screenwidth-6col-max})";
+@gu-mq-7col: ~"screen and (min-width:@{gu-screenwidth-7col-min}) and (max-width:@{gu-screenwidth-7col-max})";
+@gu-mq-8col: ~"screen and (min-width:@{gu-screenwidth-8col-min}) and (max-width:@{gu-screenwidth-8col-max})";
+@gu-mq-9col: ~"screen and (min-width:@{gu-screenwidth-9col-min}) and (max-width:@{gu-screenwidth-9col-max})";
+@gu-mq-10col: ~"screen and (min-width:@{gu-screenwidth-10col-min}) and (max-width:@{gu-screenwidth-10col-max})";
+@gu-mq-11col: ~"screen and (min-width:@{gu-screenwidth-11col-min}) and (max-width:@{gu-screenwidth-11col-max})";
+@gu-mq-12col: ~"screen and (min-width:@{gu-screenwidth-12col-min})";
+
+
+#gu {
+	.make-breakpoint(@columns, @mode: custom) {
+		@minwidth: (@gu-columnsize * @columns);
+		@fontsize: unit(@gu-minfontsize / @minwidth * 100, vw);
+
+		html {
+			& when (@mode = default) {
+				font-size: @fontsize;
+				width:100vw;
+				overflow-x: hidden;
+			}
+			& when not(@mode = default) {
+				@media screen and (min-width: @minwidth) {
+					font-size: @fontsize;
+				}
+			}
+		}
+	}
+}
+//</lu>
+

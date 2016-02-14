@@ -1,4 +1,29 @@
+@import (reference) "gunits.less";
+
 html, body {
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
 	font-weight: 300;
 }
+
+// Custom breakpoints & device aliases
+// Gunits does nothing until you make breakpoints and start using rems (or @gu)!
+
+#gu>.make-breakpoint(1, default);
+
+@phone-portrait: @gu-mq-2col;
+#gu>.make-breakpoint(2);
+
+@phone-landscape: @gu-mq-3col;
+#gu>.make-breakpoint(3);
+
+@tablet-portrait: @gu-mq-4col;
+#gu>.make-breakpoint(4);
+
+@tablet-landscape: @gu-mq-6col;
+#gu>.make-breakpoint(6);
+
+@desktop-standard: @gu-mq-8col;
+#gu>.make-breakpoint(8);
+
+@desktop-wide: @gu-mq-12col;
+#gu>.make-breakpoint(12);

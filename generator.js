@@ -430,6 +430,49 @@ var templates = {
 			'Wow, {recipient}! You are a really special person! Sincerely, GRATITUDEBOTv9.01b'
 		]);
 		return string.replace(new RegExp('{recipient}', 'g'), recipient);
+	},
+	gameidea: function() {
+		return pickone([
+			'a {gametheme} {gameobjective} {gamegenre} game',
+			'a {gametheme} '+this.gamegenre()+'/'+this.gamegenre()+' game'
+		]);
+	},
+	gamegenre: function() {
+		return pickone([
+			'card',
+			'board',
+			'falling block',
+			'tile',
+			'dice',
+			'MUD',
+			'point-n-click adventure',
+			'picture',
+			'logical-deduction',
+			'word-guessing',
+			'wagering'
+		]);
+	},
+	gametheme: function() {
+		return pickone([
+			'space',
+			'wizard',
+			'dungeon',
+			'naval',
+			'medeival',
+			'modern-day',
+			'futuristic',
+			'tron-esque'
+		]);
+	},
+	gameobjective: function() {
+		return pickone([
+			'exploration',
+			'battle',
+			'warfare',
+			'murder-mystery',
+			'facial-identification',
+			'vehicle racing'
+		]);
 	}
 }
 

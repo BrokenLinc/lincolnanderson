@@ -1,0 +1,26 @@
+@import (reference) "gunits.less";
+
+// Page layouts
+.grid {
+	display: flex;
+	flex-flow: wrap;
+}
+
+// Components
+.grid-unit {
+	width:@gu;
+	height:@gu;
+	padding: @gu * 0.1;
+	overflow:hidden;
+
+	font-size: 0.9rem;
+
+	border:(@gu * 0.005) dashed #888;
+
+	&.mod-danger {
+		background:#F40;
+	}
+	&.mod-good {
+		background:#0C8;
+	}
+}

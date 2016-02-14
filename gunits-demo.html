@@ -1,0 +1,69 @@
+<template name="gunitsdemo">
+
+	<div class="grid">
+		<div class="grid-unit mod-danger">
+			This is not another grid system.
+		</div>
+		<div class="grid-unit mod-good">
+			This is a different way of designing responsive web sites. 
+		</div>
+		<div class="grid-unit">
+			It avoids the chaos of fluid or liquid design, and instead gives control back to the designer.
+		</div>
+		<div class="grid-unit">
+			Resize this page. Notice how everything on this page scales, as if it were a graphic.
+		</div>
+		<div class="grid-unit">
+			Text wraps in a fairly predictable manner. (Save for some subpixel rendering.)
+		</div>
+		<div class="grid-unit mod-good">
+			There are no gaps or "squishy" containers.
+		</div>
+		<div class="grid-unit">
+			When the text gets too large or too small, the layout shifts to more or less columns like you would expect.
+		</div>
+		<div class="grid-unit">
+			But, the grid squares and text size stay in proportion.
+		</div>
+		<div class="grid-unit mod-good">
+			How does it work?
+		</div>
+		<div class="grid-unit">
+			At its core, we set the document font size in vw units, and manipulate it at certain breakpoints.
+		</div>
+		<div class="grid-unit">
+			We use rems to size everything else. And I mean everything.
+		</div>
+		<div class="grid-unit mod-good">
+			Your patterns will scale consistently, and your layouts neatly add up to 100%.
+		</div>
+		<div class="grid-unit mod-danger">
+			But I don't recommend you try it from scratch before looking at my code.
+		</div>
+		<div class="grid-unit">
+			It turns out that the breakpoints are pretty tricky.
+		</div>
+		<div class="grid-unit">
+			So I created "Gunits", a LESS package that makes it easier to manage.
+		</div>
+		<div class="grid-unit">
+			The @gu variable represents one grid unit.
+			At any breakpoint.
+		</div>
+		<div class="grid-unit">
+			(You don't have to be designing in a grid. @gu is just a rem value.)
+		</div>
+		<div class="grid-unit">
+			So, 2 * @gu is two grid units, @gu / 2 is half a grid unit.
+		</div>
+		<div class="grid-unit mod-good">
+			The result? This responsive grid is about 10 lines of CSS and contains no media queries.
+		</div>
+		<div class="grid-unit">
+			One bonus, is that you can opt out at any time.
+		</div>
+		<div class="grid-unit">
+			Simply stop using rems or @gu and you're back to good old liquid design.
+		</div>
+	</div>
+</template>

@@ -1,4 +1,5 @@
 Router.route('/layoutunits', function () {
+  this.layout('LunaLayout');
 	this.render('layoutunits');
 });
 if(Meteor.isClient) {
@@ -7,7 +8,7 @@ if(Meteor.isClient) {
 		 	if(error) {
 		 		Session.set('photos', []);
 		 	} else {
-		 		var content = response.content.replace(/\'/g,'\\');
+		 		var content = response.content.replace(/\'/g,'');
 			 	//console.log(content);
 		 		var photos = JSON.parse(content).items;
 			 	//console.log(photos);
